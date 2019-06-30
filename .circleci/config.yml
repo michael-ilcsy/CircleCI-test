@@ -19,11 +19,8 @@ jobs:
 workflows:
   version: 2
   sample_workflow:
-    triggers:
-      - schedule:
-          filters:
-            branches:
-              only:
-                - master
     jobs:
-      - build
+      - build:
+        filters:
+          branches:
+            only: master
