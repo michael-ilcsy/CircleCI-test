@@ -1,6 +1,8 @@
 version: 2
 jobs:
   build:
+    branches:
+      only: master
     docker:
       - image: circleci/node:10.16.0
     working_directory: ~/repo
@@ -16,11 +18,3 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test:unit
-workflows:
-  version: 2
-  sample_workflow:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only: master
