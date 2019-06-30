@@ -16,3 +16,14 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test:unit
+workflows:
+  version: 2
+  sample_workflow:
+    triggers:
+      - schedule:
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build
